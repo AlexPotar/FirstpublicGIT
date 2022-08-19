@@ -1,5 +1,13 @@
-num_tickets = int(input("Введите количество билетов:"))
+tickets = int(input("Введите количество билетов: "))
 age = list(map(int, input("Введите возраст посетителей: ").split()))
+
+if tickets != len(age):
+    print(" !!Данные не равны, пожалуйста, повторите ввод")
+    while tickets != len(age):
+        tickets = int(input("Введите количество билетов: "))
+        age = list(map(int, input("Введите возраст посетителей: ").split()))
+    else:
+        print('OK')
 
 price = []
 for i in age:
@@ -9,10 +17,9 @@ for i in age:
         price.append(990)
     else:
         price.append(1390)
-
 print("Общая сумма: ", sum(price), "рублей")
 
-if num_tickets > 3:
+if tickets > 3:
     print("ИТОГО с учетом скидки: ", sum(price) - ((sum(price) / 100) * 10), "рублей")
 else:
     print("Сумма к оплате: ", sum(price), "рублей")
